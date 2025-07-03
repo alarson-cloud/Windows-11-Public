@@ -36,8 +36,8 @@ if($winVer.DisplayVersion -eq "24H2"){
 		$bytes = (Get-Partition | Where-Object { $_.Type -eq "Recovery" } | Sort-Object -Property Size -Descending | Select-Object -First 1 | Select-Object Size)
 		$result = $bytes.Size / 1MB
 		if($result -lt 1000){
-			#Write-Output "WinRE partition is smaller than 1000 MB ($($result) MB)... proceeding to remediation"
-			#$exitCode = 1
+			Write-Output "WinRE partition is smaller than 1000 MB ($($result) MB)... proceeding to remediation"
+			$exitCode = 1
 		}
 	}
 
